@@ -1,0 +1,19 @@
+{
+  "name": "seguimiento",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --quiet app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "2.0.22"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.1"
+  }
+}
