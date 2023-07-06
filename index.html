@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASA</title>
+  <meta charset="UTF-8">
+  <title>Asteroids Near Earth</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
 </head>
 <body>
-    <h1>HOLA</h1>
+  <h1>Asteroids Near Earth</h1>
+
+  <table id="asteroidsTable">
+    <tr>
+      <th>Name</th>
+      <th>Size (km)</th>
+      <th>Velocity (km/h)</th>
+      <th>Approach Date</th>
+    </tr>
+  </table>
+
+  <script>
+    // Función para obtener los datos de los asteroides desde la API
+    function getAsteroidsData() {
+      fetch('/asteroids')
+        .then(response => response.json())
+        .then(asteroids => {
+          const table = document.getElementById('asteroidsTable');
+
+          asteroids.forEach(asteroid => {
+            const row = table.insertRow();
+            row.insertCell().textContent = asteroid.name;
+            row.insertCell().textContent = asteroid.size;
+            row.insertCell().textContent = asteroid.velocity;
+            row.insertCell().textContent = asteroid.approachDate;
+          });
+        })
+        .catch(error => console.error(error));
+    }
+
+    // Cargar los datos de los asteroides al cargar la páginay
+    window.addEventListener('load', getAsteroidsData);
+  </script>
 </body>
 </html>
